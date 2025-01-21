@@ -19,7 +19,7 @@ public class ExceptionHandlers {
 
     /**
      * Обработчик исключения NoSuchElementException
-     * Выкидывает состояние сессии, после прогружает страницу 404 с пояснением model
+     * Выкидывает состояние сессии, после прогружает страницу 404 с пояснением
      */
     @ExceptionHandler(NoSuchElementException.class)
     public String handleNoSuchElementException(NoSuchElementException exception, Model model,
