@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${author.name}]]</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="header display">
+    <div class="bookstore_logo">
+        <a class="bookstore_logo_font" data-th-href="@{/catalogue/books/list}">Bookstore</a>
+    </div>
+    <div class="bookstore_tab">
+        <a class="bookstore_tab_authors" data-th-href="@{/catalogue/authors/list}">Authors</a>
+        <a class="bookstore_tab_books" data-th-href="@{/catalogue/books/list}">Books</a>
+    </div>
+    <div class="bookstore_status_button">
+        <a data-th-href="@{/catalogue/menu}">
+            <button class="status_button">Admin</button>
+        </a>
+    </div>
+</div>
+
+<div class="author_page display">
+    <div class="author_name"><h1 data-th-text="${author.name}"></h1></div>
+    <div class="author_info">
+        <div class="author_image">
+            <img class="author_photo" th:src="@{/image/authors/{image}(image=${author.image})}" alt="#">
+        </div>
+        <div class="author_details" data-th-text="${author.details}">
+        </div>
+    </div>
+
+    <div class="author_books">
+        <div class="book_list_title"><h3>Books by <span data-th-text="${author.name}"></span></h3></div>
+
+        <div class="author_books_cells">
+            <div class="author_book_cell" th:each="book : ${books}">
+                <a data-th-href="@{/catalogue/books/{bookId}(bookId=${book.id})}">
+                    <div class="author_book_image">
+                        <img class="author_book_photo" th:src="@{/image/books/{image}(image=${book.image})}" alt="#">
+                    </div>
+                    <div class="author_book_name"><span class="author_book_name_text" data-th-text="${book.title()}"></span></div>
+                    <div class="author_book_author">
+                        <span class="author_book_author_text">By &nbsp;</span>
+                        <span class="author_book_author_text" data-th-text="${book.author().name()}"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer display">
+
+    <div class="footer_rights_mark">© 2024 Brand All Rights Reserved</div>
+
+    <div class="footer_links">
+
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/facebook.svg}" alt="#">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/instagram.svg}" alt="2">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/pinterest.svg}" alt="3">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/twitter.svg}" alt="4">
+            </a>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+</body>
+</html>

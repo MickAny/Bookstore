@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый товар</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="header display">
+    <div class="bookstore_logo">
+        <a class="bookstore_logo_font" data-th-href="@{/catalogue/books/list}">Bookstore</a>
+    </div>
+    <div class="bookstore_tab">
+        <a class="bookstore_tab_authors" data-th-href="@{/catalogue/authors/list}">Authors</a>
+        <a class="bookstore_tab_books" data-th-href="@{/catalogue/books/list}">Books</a>
+    </div>
+    <div class="bookstore_status_button">
+        <a data-th-href="@{/catalogue/menu}">
+            <button class="status_button">Admin</button>
+        </a>
+    </div>
+</div>
+
+<div class="create_book_page display">
+
+    <div class="new_book_page_info">
+        <div class="new_book_page_info_link">
+            <a data-th-href="@{/catalogue/menu}"><span style="color: white; font-size: 20px">Back to the List</span></a>
+        </div>
+        <h1 class="new_book_page_info_introduction">Create Book Form</h1>
+        <div class="new_book_page_info_advice">
+            <h3> Use this form to create a Book</h3>
+        </div>
+    </div>
+
+    <div class="create_book_block">
+        <form method="post" data-th-action="@{/catalogue/books/create}">
+            <div class="create_name_block">
+                <label>
+                    <input class="create_book_name" type="text" name="title" placeholder="Title" data-th-value="${newBookDto?.title()}"><br>
+                    <span class="hints">Book's title</span>
+                </label>
+            </div>
+            <div class="create_details_block">
+                <label>
+                    <textarea class="create_book_details" name="details" placeholder="Details" data-th-text="${newBookDto?.details}"></textarea><br>
+                    <span class="hints">Book's Description</span>
+                </label>
+            </div>
+            <div class="create_author_block" >
+                <label>
+                    <input class="create_book_author" type="text" placeholder="Author ID" name="authorId" data-th-value="${newBookDto?.authorId()}"><br>
+                    <span class="hints">Book's Author ID</span>
+                </label>
+            </div>
+            <div class="create_image_block" >
+                <label>
+                    <input class="create_book_image" type="text" placeholder="Image" name="image" data-th-value="${newBookDto?.image}"><br>
+                    <span class="hints">Book's Image</span>
+                </label>
+            </div>
+            <div class="create_book_button_block">
+                <button class="create_book_button" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div class="footer display">
+
+    <div class="footer_rights_mark">© 2024 Brand All Rights Reserved</div>
+
+    <div class="footer_links">
+
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/facebook.svg}" alt="#">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/instagram.svg}" alt="2">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/pinterest.svg}" alt="3">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/twitter.svg}" alt="4">
+            </a>
+        </div>
+
+
+
+
+    </div>
+</div>
+</body>
+</html>

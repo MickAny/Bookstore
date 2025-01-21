@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование товара [[${book.title}]]</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="header display">
+    <div class="bookstore_logo">
+        <a class="bookstore_logo_font" data-th-href="@{/catalogue/books/list}">Bookstore</a>
+    </div>
+    <div class="bookstore_tab">
+        <a class="bookstore_tab_authors" data-th-href="@{/catalogue/authors/list}">Authors</a>
+        <a class="bookstore_tab_books" data-th-href="@{/catalogue/books/list}">Books</a>
+    </div>
+    <div class="bookstore_status_button">
+        <a data-th-href="@{/catalogue/menu}">
+            <button class="status_button">Admin</button>
+        </a>
+    </div>
+</div>
+
+<div class="edit_book_page display">
+
+    <div class="edit_book_page_info">
+        <div class="edit_book_page_info_link">
+            <a data-th-href="@{/catalogue/menu}"><span style="color: white; font-size: 20px">Back to the List</span></a>
+        </div>
+        <h1 class="edit_book_page_info_introduction">Edit Book  &laquo;[[${book.title}]]&raquo;</h1>
+        <div class="edit_book_page_info_advice">
+            <h3> Use this form to edit a Book</h3>
+        </div>
+    </div>
+
+    <div class="edit_book_block">
+        <form method="post" data-th-action="@{/catalogue/books/{bookId}/edit(bookId=${book.id})}">
+            <div class="edit_title_block">
+                <label>
+                    <input class="edit_book_title" type="text" name="title" data-th-value="${updateBookDto != null ?updateBookDto.title() : book.title()}">
+                    <span class="hints">Book's Title</span>
+                </label>
+            </div>
+            <div class="edit_details_block">
+                <label>
+                    <textarea class="edit_book_details" name="details" data-th-text="${updateBookDto != null ? updateBookDto.details : book.details}"></textarea>
+                    <span class="hints">Book's Description</span>
+                </label>
+            </div>
+            <div class="edit_book_author_block" >
+                <label>
+                    <input class="edit_book_author" type="number" name="authorId" data-th-value="${updateBookDto != null ? updateBookDto.authorId() : book.author().id()}">
+                    <span class="hints">Book's Author ID</span>
+                </label>
+            </div>
+            <div class="edit_image_block" >
+                <label>
+                    <input class="edit_book_image" type="text" name="image" data-th-value="${updateBookDto != null ? updateBookDto.image : book.image}">
+                    <span class="hints">Book's Image</span>
+                </label>
+            </div>
+            <div class="edit_book_button_block">
+                <button class="edit_book_button" type="submit">Изменить</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="footer display">
+
+    <div class="footer_rights_mark">© 2024 Brand All Rights Reserved</div>
+
+    <div class="footer_links">
+
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/facebook.svg}" alt="#">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/instagram.svg}" alt="2">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/pinterest.svg}" alt="3">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/twitter.svg}" alt="4">
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

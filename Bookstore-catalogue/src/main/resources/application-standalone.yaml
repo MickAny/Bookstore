@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5400/catalogue
+    username: catalogue
+    password: catalogue
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8081
+logging:
+  level:
+    sql: info

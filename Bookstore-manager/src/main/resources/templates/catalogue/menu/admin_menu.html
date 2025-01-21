@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>Admin panel menu</title>
+</head>
+<body>
+
+<div class="header display">
+    <div class="bookstore_logo">
+        <a class="bookstore_logo_font" data-th-href="@{/catalogue/books/list}">Bookstore</a>
+    </div>
+    <div class="bookstore_tab">
+        <a class="bookstore_tab_authors" data-th-href="@{/catalogue/authors/list}">Authors</a>
+        <a class="bookstore_tab_books" data-th-href="@{/catalogue/books/list}">Books</a>
+    </div>
+    <div class="bookstore_status_button">
+        <button class="status_button">Admin</button>
+    </div>
+</div>
+
+<div class="admin_panel display">
+
+    <div class="admin_panel_tabs tab" >
+
+        <input class="tab-btn" checked id="tab-btn-1" name="tab-btn" type="radio" value="">
+        <label class="tab_label_authors" for="tab-btn-1">Authors</label>
+        <input class="tab-btn" id="tab-btn-2" name="tab-btn" type="radio" value="">
+        <label class="tab_label_books" for="tab-btn-2">Books</label>
+
+        <div class="create_panel">
+            <a class="create_author_button" data-th-href="@{/catalogue/authors/create}">Create Author</a>
+            <a class="create_book_button" data-th-href="@{/catalogue/books/create}">Create Book</a>
+        </div>
+
+        <div class="table_bcg tab-content" id="content-1">
+            <table class="table">
+                <tr class="table_header">
+                    <th class="table_header_id">ID</th>
+                    <th class="table_header_name">NAME</th>
+                    <th class="table_header_details">DETAILS</th>
+                    <th class="table_header_image">IMAGE</th>
+                    <th class="table_header_action">ACTIONS</th>
+                </tr>
+                <tbody>
+                <tr class="table_body" th:each="author : ${authors}">
+
+                    <td class="table_id" data-th-text="${author.id()}"></td>
+                    <td class="table_name" data-th-text="${author.name()}"></td>
+                    <td class="table_details" data-th-text="${author.details()}"></td>
+                    <td class="table_image" data-th-text="${author.image()}"></td>
+                    <td class="table_action">
+                        <a class="edit_button_form" data-th-href="@{/catalogue/authors/{authorId}/edit(authorId=${author.id})}">
+                            <button class="edit_button">Изменить</button>
+                        </a>
+                        <form class="delete_button_form" method="post" data-th-action="@{/catalogue/authors/{authorId}/delete(authorId=${author.id})}">
+                            <button class="delete_button" type="submit">Удалить</button>
+                        </form>
+                    </td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table_bcg tab-content" id="content-2">
+            <table class="table">
+                <tr class="table_header">
+                    <th class="table_header_id">ID</th>
+                    <th class="table_header_name">TITLE</th>
+                    <th class="table_header_details">DETAILS</th>
+                    <th class="table_header_image">IMAGE</th>
+                    <th class="table_header_author_name">AUTHOR</th>
+                    <th class="table_header_action">ACTIONS</th>
+                </tr>
+                <tbody>
+                <tr class="table_body" th:each="book : ${books}">
+                    <td class="table_id" data-th-text="${book.id()}"></td>
+                    <td class="table_name" data-th-text="${book.title()}"></td>
+                    <td class="table_details" data-th-text="${book.details()}"></td>
+                    <td class="table_image" data-th-text="${book.image()}"></td>
+                    <td class="table_author_name" data-th-text="${book.author().name()}"></td>
+                    <td class="table_action">
+                        <a class="edit_button_form" data-th-href="@{/catalogue/books/{bookId}/edit(bookId=${book.id})}">
+                            <button class="edit_button">Изменить</button>
+                        </a>
+                        <form class="delete_button_form" method="post" data-th-action="@{/catalogue/books/{bookId}/delete(bookId=${book.id})}">
+                            <button class="delete_button" type="submit">Удалить</button>
+                        </form>
+                    </td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer display">
+
+    <div class="footer_rights_mark">© 2024 Brand All Rights Reserved</div>
+
+    <div class="footer_links">
+
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/facebook.svg}" alt="#">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/instagram.svg}" alt="2">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/pinterest.svg}" alt="3">
+            </a>
+        </div>
+        <div class="footer_icons">
+            <a href="#">
+                <img th:src="@{/image/logo/twitter.svg}" alt="4">
+            </a>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+</body>
+
+</html>
